@@ -41,8 +41,8 @@ $statement->execute();
 // Zet het resultaat in een array met daarin de objecten (records uit de tabel Persoon)
 $q = $pdo->query($sql);
 $q->setFetchMode(PDO::FETCH_ASSOC);
-
-// var_dump($q);
+$row = $q->fetch();
+// var_dump($row);
 ?>
 
 <table border="1">
@@ -69,8 +69,8 @@ $q->setFetchMode(PDO::FETCH_ASSOC);
                 <td><?php echo htmlspecialchars($row['Datum']); ?></td>
                 <td><?php echo htmlspecialchars($row['Cijfer']); ?></td>
                 <td>
-                    <button class="btn btn-danger"><a href="delete.php?deleteid=<?= $row['Id'] ?>" class="text-light">Delete</a></button>
-                    <button class="btn btn-danger"><a href="update.php?updateid=<?= $row['Id'] ?>" class="text-light">update</a></button>
+                    <button class="btn btn-danger"><a href="delete.php?Id=<?= $row['Id'] ?>" class="text-light">Delete</a></button>
+                    <button class="btn btn-danger"><a href="update.php?Id=<?= $row['Id'] ?>" class="text-light">update</a></button>
                 </td>
             </tr>
         <?php endwhile; ?>

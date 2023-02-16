@@ -94,29 +94,29 @@ $result = $statement->fetch(PDO::FETCH_OBJ);
 
 <body>
     <h1>De 5 snelste achtbanen van Europa</h1>
-    <form method="POST" action="create.php">
-    <input type="text" hidden name="id" id="id" value=<?php echo $row['Id']?>>
+    <form method="POST">
+    <input type="text" hidden name="id" id="id" value="<?= $result->Id?>">
         <label for="NaamAchtbaan">Naam Achtbaan:</label>
-        <input type="text" id="NaamAchtbaan" name="NaamAchtbaan" value="<?php echo $row['NaamAchtbaan']?>" required>
+        <input type="text" id="NaamAchtbaan" name="NaamAchtbaan" value="<?= $result->NaamAchtbaan?>" required>
 
         <label for="NaamPretpark">Naam Pretpark:</label>
-        <input type="text" id="NaamPretpark" name="NaamPretpark" value="<?php echo $row['NaamPretpark']?>" required>
+        <input type="text" id="NaamPretpark" name="NaamPretpark" value="<?= $result->NaamPretpark?>" required>
 
         <label for="Land">Naam Land:</label>
-        <input type="text" id="Land" name="Land" value="<?php echo $row['Land']?>" required>
+        <input type="text" id="Land" name="Land" value="<?= $result->Land?>" required>
 
         <label for="Topsnelheid">Topsnelheid (km/h): (must be between 0-200)</label>
-        <input type="number" id="Topsnelheid" name="Topsnelheid" min="1" max="200" value="<?php echo $row['Topsnelheid']?>" required>
+        <input type="number" id="Topsnelheid" name="Topsnelheid" min="1" max="200" value="<?= $result->Topsnelheid?>" required>
 
         <label for="Hoogte">Hoogte (m):</label>
-        <input type="number" id="Hoogte" name="Hoogte" min="1" max="200" value="<?php echo $row['Hoogte']?>" required>
+        <input type="number" id="Hoogte" name="Hoogte" min="1" max="200" value="<?= $result->Hoogte?>" required>
 
         <label for="Datum">Datum eerste opening:</label>
-        <input type="date" id="Datum" name="Datum" value="<?php echo $row['Datum']?>" required>
+        <input type="date" id="Datum" name="Datum" value="<?= $result->Datum?>" required>
 
         <label for="Cijfer">Cijfer voor achtbaan:</label>
-        <span id="slider-value">5.0</span>
-        <input type="range" value="<?php echo $row['Cijfer']?>" id="Cijfer" name="Cijfer" min="1" max="10" step="0.1" onchange="updateSliderValue(this.value)">
+        <span id="slider-value"><?= $result->Cijfer?></span>
+        <input type="range" value="<?= $result->Cijfer?>" id="Cijfer" name="Cijfer" min="1" max="10" step="0.1" onchange="updateSliderValue(this.value)">
 
         <input type="submit" value="Verstuur">
     </form>

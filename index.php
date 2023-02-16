@@ -11,28 +11,28 @@
 
 <body>
     <h1>De 5 snelste achtbanen van Europa</h1>
-    <form method="POST" action="submit.php">
-        <label for="naam-achtbaan">Naam Achtbaan:</label>
-        <input type="text" id="naam-achtbaan" name="naam-achtbaan" required>
+    <form method="POST" action="create.php">
+        <label for="NaamAchtbaan">Naam Achtbaan:</label>
+        <input type="text" id="NaamAchtbaan" name="NaamAchtbaan" required>
 
-        <label for="naam-pretpark">Naam Pretpark:</label>
-        <input type="text" id="naam-pretpark" name="naam-pretpark" required>
+        <label for="NaamPretpark">Naam Pretpark:</label>
+        <input type="text" id="NaamPretpark" name="NaamPretpark" required>
 
-        <label for="naam-land">Naam Land:</label>
-        <input type="text" id="naam-land" name="naam-land" required>
+        <label for="Land">Naam Land:</label>
+        <input type="text" id="Land" name="Land" required>
 
-        <label for="topsnelheid">Topsnelheid (km/h): (must be between 0-200)</label>
-        <input type="number" id="topsnelheid" name="topsnelheid" min="1" max="200" required>
+        <label for="Topsnelheid">Topsnelheid (km/h): (must be between 0-200)</label>
+        <input type="number" id="Topsnelheid" name="Topsnelheid" min="1" max="200" required>
 
-        <label for="hoogte">Hoogte (m):</label>
-        <input type="number" id="hoogte" name="hoogte" min="1" max="200" required>
+        <label for="Hoogte">Hoogte (m):</label>
+        <input type="number" id="Hoogte" name="Hoogte" min="1" max="200" required>
 
-        <label for="opening">Datum eerste opening:</label>
-        <input type="date" id="opening" name="opening" required>
+        <label for="Datum">Datum eerste opening:</label>
+        <input type="date" id="Datum" name="Datum" required>
 
         <label for="cijfer">Cijfer voor achtbaan:</label>
         <span id="slider-value">5.0</span>
-        <input type="range" id="cijfer" name="cijfer" min="1" max="10" step="0.1" onchange="updateSliderValue(this.value)">
+        <input type="range" id="Cijfer" name="Cijfer" min="1" max="10" step="0.1" onchange="updateSliderValue(this.value)">
 
         <input type="submit" value="Verstuur">
     </form>

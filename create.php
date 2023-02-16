@@ -48,8 +48,8 @@ $statement->bindValue(':Hoogte', $_POST['Hoogte'], PDO::PARAM_STR);
 $statement->bindValue(':Datum', $_POST['Datum'], PDO::PARAM_STR);
 $statement->bindValue(':Cijfer', $_POST['Cijfer'], PDO::PARAM_STR);
 // We vuren de sql-query af op de database
-
 $result = $statement->execute();
+
 
 if ($result) {
     echo "Er is een nieuw record gemaakt in de database.";

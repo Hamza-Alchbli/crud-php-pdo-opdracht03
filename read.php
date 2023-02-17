@@ -41,8 +41,8 @@ $statement->execute();
 // Zet het resultaat in een array met daarin de objecten (records uit de tabel Persoon)
 $q = $pdo->query($sql);
 $q->setFetchMode(PDO::FETCH_ASSOC);
-$row = $q->fetch();
-// var_dump($row);
+$rows = $q->fetchAll();
+// var_dump($rows);
 ?>
 
 <table border="1">
@@ -56,15 +56,17 @@ $row = $q->fetch();
             <th>Hoogte</th>
             <th>Datum</th>
             <th>Cijfer</th>
+            <th>Opties</th>
         </tr>
     </thead>
     <tbody>
-        <?php while ($row = $q->fetch()) : ?>
+        <?php foreach ($rows as $row) : ?>
             <tr>
                 <td><?php echo htmlspecialchars($row['Id']) ?></td>
                 <td><?php echo htmlspecialchars($row['NaamAchtbaan']); ?></td>
                 <td><?php echo htmlspecialchars($row['NaamPretpark']); ?></td>
                 <td><?php echo htmlspecialchars($row['Land']); ?></td>
+                <td><?php echo htmlspecialchars($row['Topsnelheid']); ?></td>
                 <td><?php echo htmlspecialchars($row['Hoogte']); ?></td>
                 <td><?php echo htmlspecialchars($row['Datum']); ?></td>
                 <td><?php echo htmlspecialchars($row['Cijfer']); ?></td>
@@ -73,6 +75,6 @@ $row = $q->fetch();
                     <button class="btn btn-danger"><a href="update.php?Id=<?= $row['Id'] ?>" class="text-light">update</a></button>
                 </td>
             </tr>
-        <?php endwhile; ?>
+        <?php endforeach; ?>
     </tbody>
 </table>

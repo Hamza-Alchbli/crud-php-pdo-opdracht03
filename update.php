@@ -27,9 +27,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 NaamPretpark = :NaamPretpark,
                 Land = :Land,
                 Topsnelheid = :Topsnelheid,
+                Hoogte = :Hoogte,
                 Datum = :Datum,
-                Cijfer = :Cijfer,
-                WHERE  Id = :id";
+                Cijfer = :Cijfer
+                WHERE  Id = :Id";
 
         // We bereiden de sql-query voor met de method prepare
         $statement = $pdo->prepare($sql);
@@ -37,10 +38,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $statement->bindValue(':NaamAchtbaan', $_POST['NaamAchtbaan'], PDO::PARAM_STR);
         $statement->bindValue(':NaamPretpark', $_POST['NaamPretpark'], PDO::PARAM_STR);
         $statement->bindValue(':Land', $_POST['Land'], PDO::PARAM_STR);
-        $statement->bindValue(':Topsnelheid', $_POST['Topsnelheid'], PDO::PARAM_STR);
-        $statement->bindValue(':Hoogte', $_POST['Hoogte'], PDO::PARAM_STR);
+        $statement->bindValue(':Topsnelheid', $_POST['Topsnelheid'], PDO::PARAM_INT);
+        $statement->bindValue(':Hoogte', $_POST['Hoogte'], PDO::PARAM_INT);
         $statement->bindValue(':Datum', $_POST['Datum'], PDO::PARAM_STR);
         $statement->bindValue(':Cijfer', $_POST['Cijfer'], PDO::PARAM_STR);
+        $statement->bindValue(':Id', $_POST['Id'], PDO::PARAM_INT);
 
         $statement->execute();
 
@@ -55,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 }
 
 // Maak een sql-query voor de database
-$sql = "SELECT `Id`, 
+$sql = "SELECT  `Id`, 
                 `NaamAchtbaan`, 
                 `NaamPretpark`, 
                 `Land`, 
@@ -95,7 +97,7 @@ $result = $statement->fetch(PDO::FETCH_OBJ);
 <body>
     <h1>De 5 snelste achtbanen van Europa</h1>
     <form method="POST">
-    <input type="text" hidden name="id" id="id" value="<?= $result->Id?>">
+    <input type="hidden"  name="Id" id="Id" value="<?= $result->Id?>" >
         <label for="NaamAchtbaan">Naam Achtbaan:</label>
         <input type="text" id="NaamAchtbaan" name="NaamAchtbaan" value="<?= $result->NaamAchtbaan?>" required>
 
